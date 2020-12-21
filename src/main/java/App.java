@@ -1,12 +1,33 @@
+import java.util.Scanner;
+
 public class App {
     public static void main(String[] args) {
-        Weapon cube = new Weapon("Palka", WeaponType.CLUB, 2);
-        Shield smallShield = new Shield("MalaTarcza", ShieldType.SMALL, 1);
-        Player player1 = new Player("Mqh", 10, 1, 1, true);
-        player1.setWeapon(cube);
-        player1.setShield(smallShield);
+        PlayerRepo playerRepo = new PlayerRepo();
+        Scanner sc = new Scanner(System.in);
+        int option;
+        boolean endGame = false;
 
-        System.out.println(player1.getName());
-
+        while (!endGame) {
+            System.out.println("Wybierz:\n1 - Dodaj\n2 - Pokaz po id\n3 - Wyswietl wszystkich graczy\n0 - Wyjscie");
+            option = sc.nextInt();
+            switch (option) {
+                case 1:
+                    playerRepo.createNewPlayer();
+                    break;
+                case 2:
+                    playerRepo.displayPlayerById();
+                    break;
+                case 3:
+                    playerRepo.displayAllPlayers();
+                    break;
+                case 0:
+                    System.out.println("Wyjscie");
+                    endGame = true;
+                    break;
+                default:
+                    System.out.println("Bledna instrukcja");
+                    break;
+            }
+        }
     }
 }

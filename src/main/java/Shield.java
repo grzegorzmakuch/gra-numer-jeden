@@ -1,11 +1,14 @@
 public class Shield {
     private String name;
-    private ShieldType shieldType;
+    private long shieldTypeId;
     private int defensePoints;
 
-    public Shield(String name, ShieldType shieldType, int defensePoints) {
+    public Shield() {
+    }
+
+    public Shield(String name, long shieldTypeId, int defensePoints) {
         this.name = name;
-        this.shieldType = shieldType;
+        this.shieldTypeId = shieldTypeId;
         this.defensePoints = defensePoints;
     }
 }
