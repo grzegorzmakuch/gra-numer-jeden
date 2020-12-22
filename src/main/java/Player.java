@@ -5,12 +5,13 @@ import javax.persistence.*;
 public class Player {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
     private String name;
     private int healthPoints;
     private int attack;
     private int defense;
     private boolean isAlive;
+    private boolean isActive;
 //    one player to many weapons
 //    private Weapon weapon;
 //    one player to many shields
@@ -43,11 +44,7 @@ public class Player {
         isAlive = alive;
     }
 
-    //    public void setWeapon(Weapon weapon) {
-//        this.weapon = weapon;
-//    }
-
-//    public void setShield(Shield shield) {
-//        this.shield = shield;
-//    }
+    public void setActive(boolean active) {
+        isActive = active;
+    }
 }

@@ -1,33 +1,47 @@
 import java.util.Scanner;
 
 public class App {
-    public static void main(String[] args) {
-        PlayerRepo playerRepo = new PlayerRepo();
-        Scanner sc = new Scanner(System.in);
-        int option;
-        boolean endGame = false;
 
-        while (!endGame) {
-            System.out.println("Wybierz:\n1 - Dodaj\n2 - Pokaz po id\n3 - Wyswietl wszystkich graczy\n0 - Wyjscie");
-            option = sc.nextInt();
+    private static PlayerService playerService;
+
+    public static void main(String[] args) {
+        playerService = new PlayerService();
+        mainLoop();
+    }
+
+    private static void mainLoop() {
+        int option = -1; //wyniesc do private
+        boolean endGame = false; //wyniesc do private
+        while(!endGame) {
+            printMainOptions();
+            option = playersChoice();
             switch (option) {
                 case 1:
-                    playerRepo.createNewPlayer();
+                    playerService.createNewPlayer();
                     break;
-                case 2:
-                    playerRepo.displayPlayerById();
-                    break;
+//                case 2:
+//                    startGame();
+//                    break;
                 case 3:
-                    playerRepo.displayAllPlayers();
+                    playerService.displayPlayerById();
                     break;
-                case 0:
+                case 4:
                     System.out.println("Wyjscie");
                     endGame = true;
                     break;
                 default:
-                    System.out.println("Bledna instrukcja");
+                    System.out.println("Niepoprawna wartosc");
                     break;
             }
         }
+    }
+
+    private static int playersChoice() {
+        Scanner sc = new Scanner(System.in);
+        return sc.nextInt();
+    }
+
+    private static void printMainOptions() {
+        System.out.println("Wybierz:\n1 - Dodaj\n2 - Rozpocznij gre\n3 - Wyswietl wszystkich graczy\n4 - Wyjscie");
     }
 }
