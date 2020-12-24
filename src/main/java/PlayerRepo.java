@@ -1,15 +1,9 @@
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class PlayerRepo {
 
@@ -34,5 +28,12 @@ public class PlayerRepo {
         Player player = session.get(Player.class, id);
         session.getTransaction().commit();
         return player;
+    }
+
+    protected List<Player> getAllPlayers() {
+        Session session = getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        Query getAll = session.createQuery("from Player");
+        return getAll.list();
     }
 }

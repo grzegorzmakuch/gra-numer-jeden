@@ -34,19 +34,17 @@ public class PlayerService {
     }
 
     public void displayAllPlayers() {
-        System.out.println("Podaj id gracza:");
-        int option = sc.nextInt();
-        Player pl = playerRepo.getPlayerById(option);
-        System.out.println(pl.getName());
+        List<Player> allPlayers = playerRepo.getAllPlayers();
+        for (Player player : allPlayers) {
+            System.out.println(player.getName());
+        }
     }
 
-    public void addPointsToPlayer() {
-
+    public List<Player> getAllPlayers() {
+        List<Player> result = new ArrayList<>();
+        for (Player player : playerRepo.getAllPlayers()) {
+            result.add(player);
+        }
+        return result;
     }
-
-//    public Player choosePlayerFromAvalaiblePlayers() {
-//        Player activePlayer;
-//        System.out.println("Wybierz gracza z listy");
-//        return activePlayer;
-//    }
 }

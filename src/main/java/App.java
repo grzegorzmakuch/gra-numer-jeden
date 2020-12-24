@@ -3,9 +3,11 @@ import java.util.Scanner;
 public class App {
 
     private static PlayerService playerService;
+    private static GameService gameService;
 
     public static void main(String[] args) {
         playerService = new PlayerService();
+
         mainLoop();
     }
 
@@ -19,9 +21,9 @@ public class App {
                 case 1:
                     playerService.createNewPlayer();
                     break;
-//                case 2:
-//                    startGame();
-//                    break;
+                case 2:
+                    playerService.displayAllPlayers();
+                    break;
                 case 3:
                     playerService.displayPlayerById();
                     break;
@@ -42,6 +44,6 @@ public class App {
     }
 
     private static void printMainOptions() {
-        System.out.println("Wybierz:\n1 - Dodaj\n2 - Rozpocznij gre\n3 - Wyswietl wszystkich graczy\n4 - Wyjscie");
+        System.out.println("Wybierz:\n1 - Dodaj\n2 - Pokaz wszystkich\n3 - Wyswietl gracza po ID\n4 - Wyjscie");
     }
 }
