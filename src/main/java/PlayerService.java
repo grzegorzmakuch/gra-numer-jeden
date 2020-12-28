@@ -16,11 +16,6 @@ public class PlayerService {
         sc = new Scanner(System.in);
         System.out.println("Podaj imie gracza");
         player.setName(sc.nextLine());
-        player.setHealthPoints(10);
-        player.setAttack(1);
-        player.setDefense(2);
-        player.setAlive(true);
-        player.setActive(false);
         playerRepo.savePlayer(player);
         System.out.println("Gracz o imieniu " + player.getName() + " zostal utworzony");
     }
